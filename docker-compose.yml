@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: credit-api
+    ports:
+      - "8080:8080"
+    environment:
+      DB_HOST: "dpg-d9c3bvhkh4rs73bvdjog-a.oregon-postgres.render.com"
+      DB_PORT: "5432"
+      DB_USER: "root"
+      DB_PASSWORD: "6oz39OKVaYhgy6n7i5pni0rz5BRL0SuX"
+      DB_NAME: "db_credit"
+      DB_SSLMODE: "require"

@@ -1,0 +1,17 @@
+server:
+  port: 8080
+  host: "0.0.0.0"
+
+database:
+  host: "dpg-d9c3bvhkh4rs73bvdjog-a.oregon-postgres.render.com"
+  port: 5432
+  user: "root"
+  password: "6oz39OKVaYhgy6n7i5pni0rz5BRL0SuX"
+  name: "db_credit"
+  sslmode: "require"
+  max_open_conns: 25
+  max_idle_conns: 25
+  conn_max_lifetime: 5
+
+bureau:
+  data_path: "internal/data/bureau_data.json"

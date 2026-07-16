@@ -1,0 +1,44 @@
+{
+  "bureau": [
+    {
+      "id": 1,
+      "cpf": "123.456.789-00",
+      "score_credito": 750,
+      "emprestimo_existente": false,
+      "tipo_emprestimo": "",
+      "instituicao": ""
+    },
+    {
+      "id": 2,
+      "cpf": "987.654.321-00",
+      "score_credito": 820,
+      "emprestimo_existente": true,
+      "tipo_emprestimo": "consignado",
+      "instituicao": "Banco do Brasil"
+    },
+    {
+      "id": 3,
+      "cpf": "456.789.123-00",
+      "score_credito": 450,
+      "emprestimo_existente": true,
+      "tipo_emprestimo": "pessoal",
+      "instituicao": "Bradesco"
+    },
+    {
+      "id": 4,
+      "cpf": "321.654.987-00",
+      "score_credito": 680,
+      "emprestimo_existente": false,
+      "tipo_emprestimo": "",
+      "instituicao": ""
+    },
+    {
+      "id": 5,
+      "cpf": "789.123.456-00",
+      "score_credito": 350,
+      "emprestimo_existente": true,
+      "tipo_emprestimo": "rotativo",
+      "instituicao": "Cielo"
+    }
+  ]
+}

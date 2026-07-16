@@ -1,0 +1,149 @@
+{
+  "info": {
+    "name": "Risk Credit API",
+    "description": "API de análise de crédito - Risk Credit",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health",
+        "description": "Verifica se a API está funcionando"
+      }
+    },
+    {
+      "name": "Analisar Crédito",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/credit/analyze",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cpf\": \"123.456.789-00\"\n}"
+        },
+        "description": "Analisa o crédito de um cliente pelo CPF"
+      }
+    },
+    {
+      "name": "Analisar Crédito - Maria Santos",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/credit/analyze",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cpf\": \"987.654.321-00\"\n}"
+        },
+        "description": "Analisa o crédito da Maria Santos"
+      }
+    },
+    {
+      "name": "Analisar Crédito - Pedro Oliveira",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/credit/analyze",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cpf\": \"456.789.123-00\"\n}"
+        },
+        "description": "Analisa o crédito do Pedro Oliveira"
+      }
+    },
+    {
+      "name": "Analisar Crédito - Ana Costa",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/credit/analyze",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cpf\": \"321.654.987-00\"\n}"
+        },
+        "description": "Analisa o crédito da Ana Costa"
+      }
+    },
+    {
+      "name": "Analisar Crédito - Carlos Ferreira",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/credit/analyze",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cpf\": \"789.123.456-00\"\n}"
+        },
+        "description": "Analisa o crédito do Carlos Ferreira"
+      }
+    },
+    {
+      "name": "Analisar Crédito - Cliente Não Encontrado",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/credit/analyze",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cpf\": \"000.000.000-00\"\n}"
+        },
+        "description": "Teste com CPF inexistente"
+      }
+    },
+    {
+      "name": "Analisar Crédito - CPF Vazio",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/credit/analyze",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cpf\": \"\"\n}"
+        },
+        "description": "Teste com CPF vazio (deve retornar erro 400)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "testes": [
+    {
+      "descricao": "Cliente com score alto - Deve ser APROVADO",
+      "cpf": "123.456.789-00",
+      "resultado_esperado": {
+        "nome": "João Silva",
+        "cpf": "123.456.789-00",
+        "score_credito": 750,
+        "nivel_risco": "BAIXO",
+        "acao": "APROVAR"
+      }
+    },
+    {
+      "descricao": "Cliente com score médio - Deve ser ANALISADO",
+      "cpf": "321.654.987-00",
+      "resultado_esperado": {
+        "nome": "Ana Costa",
+        "cpf": "321.654.987-00",
+        "score_credito": 680,
+        "nivel_risco": "MEDIO",
+        "acao": "ANALISAR"
+      }
+    },
+    {
+      "descricao": "Cliente com score baixo - Deve ser NEGADO",
+      "cpf": "456.789.123-00",
+      "resultado_esperado": {
+        "nome": "Pedro Oliveira",
+        "cpf": "456.789.123-00",
+        "score_credito": 450,
+        "nivel_risco": "ALTO",
+        "acao": "NEGAR"
+      }
+    },
+    {
+      "descricao": "Cliente com empréstimo Santander - Deve ser NEGADO",
+      "cpf": "789.123.456-00",
+      "resultado_esperado": {
+        "nome": "Carlos Ferreira",
+        "cpf": "789.123.456-00",
+        "score_credito": 350,
+        "nivel_risco": "ALTO",
+        "acao": "NEGAR"
+      }
+    },
+    {
+      "descricao": "Cliente não encontrado",
+      "cpf": "000.000.000-00",
+      "resultado_esperado": null
+    },
+    {
+      "descricao": "CPF inválido (vazio)",
+      "cpf": "",
+      "resultado_esperado": {
+        "error": "CPF é obrigatório"
+      }
+    }
+  ]
+}
