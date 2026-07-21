@@ -1,26 +1,23 @@
-# Build stage
-FROM golang:1.21-alpine AS builder
+# --- ETAPA DE BUILD (Exemplo) ---
+FROM golang:1.22-alpine AS builder
+WORKDIR /app
+COPY . .
+RUN CGO_ENABLED=0 GOOS=linux go build -o main .
 
+# --- ETAPA FINAL (Onde está o problema) ---
+FROM alpine:latest  # ou gcr.io/distroless/static, debian, etc.
 WORKDIR /app
 
-COPY go.mod go.sum ./
-RUN go mod download
-
-COPY . .
-
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main ./cmd/api
-
-# Runtime stage
-FROM alpine:latest
-
-RUN apk --no-cache add ca-certificates
-
-WORKDIR /root/
-
+# 1. Copia o binário
 COPY --from=builder /app/main .
-COPY --from=builder /app/config.yaml .
-COPY --from=builder /app/internal/data ./internal/data
+
+# 2. CORREÇÃO: Garante permissão de execução para qualquer usuário
+RUN chmod +x /app/main
+
+# (Opcional, mas altamente recomendado para OpenShift)
+# Mudar a posse do arquivo e usar um usuário não-root explicitamente
+RUN chmod -R 777 /app
 
 EXPOSE 8080
 
-CMD ["./main"]
+ENTRYPOINT ["./main"]
