@@ -5,7 +5,8 @@ COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -o main .
 
 # --- ETAPA FINAL (Onde está o problema) ---
-FROM alpine:latest  # ou gcr.io/distroless/static, debian, etc.
+FROM alpine:latest  
+# ou gcr.io/distroless/static, debian, etc.
 WORKDIR /app
 
 # 1. Copia o binário
