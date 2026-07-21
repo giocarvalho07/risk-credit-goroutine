@@ -14,9 +14,8 @@ COPY --from=builder /app/main .
 # 2. CORREÇÃO: Garante permissão de execução para qualquer usuário
 RUN chmod +x /app/main
 
-# (Opcional, mas altamente recomendado para OpenShift)
-# Mudar a posse do arquivo e usar um usuário não-root explicitamente
-RUN chmod -R 777 /app
+# ---> ADICIONE ESTA LINHA PARA DAR PERMISSÃO <---
+RUN chmod +x ./main && chmod -R 777 /root
 
 EXPOSE 8080
 
