@@ -1,23 +1,15 @@
-# --- ETAPA DE BUILD (Exemplo) ---
-FROM golang:1.22-alpine AS builder
-WORKDIR /app
-COPY . .
-RUN CGO_ENABLED=0 GOOS=linux go build -o main .
+FROM alpine:3.19
 
-# --- ETAPA FINAL (Onde está o problema) ---
-FROM alpine:latest  
-# ou gcr.io/distroless/static, debian, etc.
 WORKDIR /app
 
-# 1. Copia o binário
-COPY --from=builder /app/main .
+# Copia o binário e os arquivos de configuração necessários
+COPY main .
+COPY config.yaml .
+COPY internal/data ./internal/data
 
-# 2. CORREÇÃO: Garante permissão de execução para qualquer usuário
-RUN chmod +x /app/main
-
-# ---> ADICIONE ESTA LINHA PARA DAR PERMISSÃO <---
-RUN chmod +x ./main && chmod -R 777 /root
+# Garante permissões de execução e leitura totais
+RUN chmod +x ./main && chmod -R 777 /app
 
 EXPOSE 8080
 
-ENTRYPOINT ["./main"]
+CMD ["./main"]
